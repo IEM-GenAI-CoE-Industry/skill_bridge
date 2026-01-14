@@ -1,0 +1,190 @@
+.login-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.login-modal {
+  background: #1b1b1b;
+  padding: 32px;
+  border-radius: 16px;
+  width: 360px;
+  position: relative;
+  text-align: center;
+  .login-modal {
+  animation: modalFade 0.25s ease-out;
+}
+
+@keyframes modalFade {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.auth-tabs {
+  display: flex;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #333;
+}
+
+.auth-tabs button {
+  flex: 1;
+  padding: 10px;
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.auth-tabs button.active {
+  color: #7c7cff;
+  border-bottom: 2px solid #7c7cff;
+}
+
+.login-modal h2 {
+  margin-bottom: 14px;
+}
+
+.login-modal p {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 24px;
+}
+
+.login-modal input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #111;
+  color: #fff;
+}
+
+.login-submit {
+  width: 100%;
+  padding: 12px;
+  background: #7c7cff;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+}
+.login-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.login-modal {
+  background: #1b1b1b;
+  padding: 32px;
+  border-radius: 16px;
+  width: 360px;
+  position: relative;
+  text-align: center;
+}
+
+.close-btn {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.auth-tabs {
+  display: flex;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #333;
+}
+
+.auth-tabs button {
+  flex: 1;
+  padding: 10px;
+  background: none;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.auth-tabs button.active {
+  color: #7c7cff;
+  border-bottom: 2px solid #7c7cff;
+}
+
+.login-modal h2 {
+  margin-bottom: 14px;
+}
+
+.login-modal p {
+  font-size: 14px;
+  color: #aaa;
+  margin-bottom: 24px;
+}
+
+.login-modal input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  border: 1px solid #333;
+  background: #111;
+  color: #fff;
+}
+
+.login-submit {
+  width: 100%;
+  padding: 12px;
+  background: #7c7cff;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.login-submit:active {
+  transform: translateY(1px);
+}
+
+
+.login-modal input:focus 
+{
+  outline: none;
+  border-color: #7c7cff;
+  box-shadow: 0 0 0 2px rgba(124,124,255,0.2);
+}
+
