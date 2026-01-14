@@ -16,9 +16,12 @@ networkx                                     # Required for using UnstructuredEx
 openpyxl                                     # Reads/writes Excel 2010 xlsx/xlsm/xltx/xltm files
 pandas                                       # Data manipulation and analysis library
 pypdf                                        # PDF toolkit for reading and manipulating PDF files
-python-docx                                  # Reads/writes Microsoft Word 2007/2010 docx files
+python-docx                                 # Reads/writes Microsoft Word 2007/2010 docx files
 ruff                                         # Linting tool for Python
 fastapi                                      # Web framework for building APIs
 uvicorn                                      # ASGI server for FastAPI
 pydantic                                     # Data validation and settings management using Python type annotations
-pydantic-settings                            # Settings management for Pydantic
+pydantic-settings                            # Settings management for 
+google.genai                        # Official client library for accessing Google's Gemini models
+fpdf                                        # PDF generation library for Python
+Jinja2                                      # The templating engine used to fill the LaTeX files
