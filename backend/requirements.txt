@@ -21,6 +21,11 @@ ruff                                         # Linting tool for Python
 fastapi                                      # Web framework for building APIs
 uvicorn                                      # ASGI server for FastAPI
 pydantic                                     # Data validation and settings management using Python type annotations
+pydantic-settings                            # Settings management for Pydantic
+requests
+beautifulsoup4
+lxml
+tavily-python
 pydantic-settings                            # Settings management for 
 google.genai                        # Official client library for accessing Google's Gemini models
 fpdf                                        # PDF generation library for Python
