@@ -1,54 +1,76 @@
-import os
 import json
-from groq import Groq
-from dotenv import load_dotenv
-from roadmap_mvp_state import RoadmapState
+import os
+from google import genai
+from .roadmap_mvp_state import RoadmapState
 
-# Load environment variables
-current_dir = os.path.dirname(os.path.abspath(__file__))
-load_dotenv(os.path.join(current_dir, '.env'))
+client = genai.Client(api_key="AIzaSyDp7Xl852uwIhwReyOIA6dn65OWXjIgoa8")
 
-# Configuration
-GROKAI_API_KEY = os.getenv("grokai_api_key")
-client = Groq(api_key=GROKAI_API_KEY)
-MODEL_NAME = "mixtral-8x7b-32768"  # Grokai model
+
+def clean_json_response(text: str) -> str:
+    """
+    Removes ```json markdown wrapping if present
+    """
+    text = text.strip()
+
+    if text.startswith("```"):
+        text = text.split("```")[1]
+
+    return text.strip()
+
 
 def generator_node(state: RoadmapState) -> RoadmapState:
-    """Uses AI to turn report text into a JSON roadmap."""
     content = state.get("report_content", "")
-    
-    if not content or "Error" in content:
-        return {"final_roadmap_json": {"error": "No valid report content to process"}}
 
-    print(f"🧠 Node 2 (Generator): Creating roadmap using {MODEL_NAME}...")
-    
-    prompt = f"""
-    Analyze the following Skill Report and identify the missing skills.
-    Then, create a structured learning roadmap in JSON format.
-    
-    Report: {content}
-    
-    Return ONLY a JSON object with this structure:
-    {{
-        "roadmap_title": "...",
-        "modules": [
-            {{ "skill": "...", "week": 1, "topic": "...", "recommended_action": "..." }}
-        ]
-    }}
-    """
-    
+    if not content:
+        return {
+            **state,
+            "final_roadmap_json": {"error": "No report content found"}
+        }
+
     try:
-        response = client.chat.completions.create(
-            model=MODEL_NAME,
-            messages=[{"role": "user", "content": prompt}]
+        prompt = f"""
+        Generate a structured learning roadmap in STRICT JSON format.
+
+        IMPORTANT:
+        - Return ONLY JSON.
+        - Do NOT include explanations.
+        - Include:
+            roadmap_title
+            modules (list)
+                skill
+                week
+                topic
+                recommended_action
+                course_link (real working link)
+
+        Skill Report:
+        {content}
+        """
+
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=prompt
         )
-        raw_text = response.choices[0].message.content.strip()
-        
-        # Clean markdown if present
-        if "```json" in raw_text:
-            raw_text = raw_text.split("```json")[1].split("```")[0].strip()
-            
-        return {"final_roadmap_json": json.loads(raw_text)}
+
+        roadmap_text = response.text
+
+        if not roadmap_text:
+            raise ValueError("Model returned empty response")
+
+        cleaned_text = clean_json_response(roadmap_text)
+
+        roadmap_json = json.loads(cleaned_text)
+
+        return {
+            **state,
+            "final_roadmap_json": roadmap_json
+        }
+
     except Exception as e:
-        print(f"❌ Generator Error: {e}")
-        return {"final_roadmap_json": {"error": str(e)}}
+        return {
+            **state,
+            "final_roadmap_json": {
+                "error": str(e),
+                "raw_response": response.text if 'response' in locals() else "No response"
+            }
+        }

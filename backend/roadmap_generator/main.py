@@ -1,8 +1,10 @@
 import json
 from langgraph.graph import StateGraph, END
-from roadmap_mvp_state import RoadmapState
-from scraper_node import scraper_node
-from generator_node import generator_node
+
+from .roadmap_mvp_state import RoadmapState
+from .scraper_node import scraper_node
+from .generator_node import generator_node
+
 
 def run_app():
     # 1. Initialize Graph with State Schema
@@ -22,17 +24,19 @@ def run_app():
 
     # 5. Execute
     print("🚀 Starting Career Coach Workflow...")
+
     initial_state = {
         "report_content": "",
         "skills_to_learn": [],
         "final_roadmap_json": {}
     }
-    
+
     final_state = graph.invoke(initial_state)
 
     # 6. Output Result
     print("\n--- FINAL ROADMAP ---")
     print(json.dumps(final_state["final_roadmap_json"], indent=4))
+
 
 if __name__ == "__main__":
     run_app()
