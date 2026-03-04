@@ -1,0 +1,79 @@
+% Base LaTeX template for CV formatting (Option 1).
+
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[left=1cm,right=1cm,top=1cm,bottom=1cm]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+% --- SAFETY DEFINITIONS (Makes file readable even when raw) ---
+\providecommand{\VAR}[1]{#1}
+\providecommand{\BLOCK}[1]{}
+
+% --- STYLING ---
+\definecolor{primary}{RGB}{0, 51, 102} 
+\newcommand{\name}[1]{{\huge\bfseries\color{primary} #1}}
+\titleformat{\section}{\large\bfseries\color{primary}}{}{0em}{}[\hrule]
+
+\begin{document}
+
+% HEADER
+\begin{center}
+    \name{ John Huber }\\
+    \vspace{2mm}
+    New York, USA | 890-555-0401 | email@email.com \\
+    \href{}{LinkedIn} | \href{}{GitHub}
+\end{center}
+
+\vspace{0.3cm}
+
+% TWO COLUMNS
+\noindent
+\begin{minipage}[t]{0.30\textwidth}
+    \section*{SUMMARY}
+    Proactive and detailed UX Designer with 7+ years of proven end-to-end experience delivering enjoyable web and mobile products for FinTech. Clear understanding of technologies allows seamless collaboration with developers, while strong communication skills ensure transparency with stakeholders. Up-to-date knowledge of Adobe Photoshop, Illustrator, Sketch, and InVision.
+
+    \section*{SKILLS}
+    \textbf{Technical Skills:}\\
+    HTML5 ,     CSS ,     JavaScript ,     Adobe Suite ,     Sketch ,     InVision ,     Balsamiq ,     Time management ,     Self-motivated ,     Effective communicator ,     Team oriented     
+    \section*{EDUCATION}
+    \textbf{ Masters Degree in Human Computer Interaction (HCI) }\\
+    Pratt Institute\\
+    \textit{ 2022 }\\
+    
+    \vspace{2mm}
+    \textbf{ Bachelor's Degree in Interaction Design }\\
+    Pratt Institute New York\\
+    \textit{ 2020 }\\
+    
+    \vspace{2mm}
+\end{minipage}
+\hfill
+\vline
+\hfill
+\begin{minipage}[t]{0.66\textwidth}
+    \section*{EXPERIENCE}
+    \textbf{ Real Vision Group } \hfill \textit{  }\\
+    \textit{  } | 
+    \begin{itemize}[leftmargin=*]
+    \end{itemize}
+    \vspace{2mm}
+    \textbf{ S&P Global } \hfill \textit{  }\\
+    \textit{  } | 
+    \begin{itemize}[leftmargin=*]
+    \end{itemize}
+    \vspace{2mm}
+    \textbf{ Status } \hfill \textit{  }\\
+    \textit{  } | 
+    \begin{itemize}[leftmargin=*]
+    \end{itemize}
+    \vspace{2mm}
+
+    \section*{PROJECTS}
+
+    \section*{LEADERSHIP}
+\end{minipage}
+
+\end{document}

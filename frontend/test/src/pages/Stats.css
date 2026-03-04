@@ -1,0 +1,65 @@
+.stats {
+  padding: 80px 80px;
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(124,124,255,0.05),
+    transparent
+  );
+}
+
+.stat-box {
+  flex: 1;
+  text-align: center;
+  padding: 40px 20px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid #222;
+  transition: transform 0.3s ease;
+
+  /* animation */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: statFadeUp 0.8s ease forwards;
+}
+
+.stat-box:hover {
+  transform: translateY(-6px);
+}
+
+.stat-box:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.stat-box:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.stat-box:nth-child(3) {
+  animation-delay: 0.5s;
+}
+
+.stat-box h3 {
+  font-size: 42px;
+  color: #7c7cff;
+  margin-bottom: 10px;
+}
+
+.stat-box p {
+  color: #aaa;
+  font-size: 15px;
+}
+
+@keyframes statFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
